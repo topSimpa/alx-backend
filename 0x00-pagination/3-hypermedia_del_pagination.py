@@ -44,20 +44,20 @@ class Server:
         """
         assert index in range(len(self.dataset()))
         data = []
-        index_val = index
         index = 0 if None else index
         next_index = index
-        page_count = 0
+        step = 0
+        count = 0
 
-        for step in range(page_size):
+        while (count < page_size):
             if (index + step) in self.indexed_dataset().keys():
-                if page_count == 0:
-                    index_val = index + step
                 data.append(self.indexed_dataset()[index + step])
-                page_count += 1
-                next_index += step
-        return {'index': index_val,
+                count += 1
+                next_index = index + step
+            step += 1
+
+        return {'index': index,
                 'data': data,
                 'page_size': page_size,
-                'next_index': next_index + 1
+                'next_index': next_index + 1,
                 }
