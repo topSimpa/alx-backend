@@ -48,6 +48,7 @@ class Server:
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
         """returns data and other info"""
         data = self.get_page(page, page_size)
+        page_size = 0 if data == [] else page_size
         prev_page = None if page == 1 else page - 1
         next_page = None
         total_page = (len(self.dataset) // page_size)
