@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-	Simple pagination
+Simple pagination
 """
 
 import csv
@@ -10,7 +10,7 @@ from typing import List
 
 def index_range(page: int, page_size: int) -> tuple:
     """
-   Function that return the start and stop of a page
+    Function that return the start and stop of a page
     """
     return ((page * page_size) - page_size, page * page_size)
 
@@ -36,9 +36,11 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """get the rows in page"""
-        assert page != 0
-        assert page_size != 0
-	    [start, end] = index_range(page, page_size)
-		if start > len(self.__dataset) or end > len(self.__dataset):
+        assert isinstance(page_size, int)
+        assert isinstance(page, int)
+        assert page > 0
+        assert page_size > 0
+        [start, end] = index_range(page, page_size)
+        if start > len(self.dataset()) or end > len(self.dataset()):
             return []
-		return self.__dataset[start : end + 1]
+        return self.dataset()[start: end]
