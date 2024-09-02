@@ -59,6 +59,7 @@ class Server:
                 page_count += 1
                 next_index += step
         return {'index': index_val,
-                'next_index': next_index + 1,
+                'data': data,
                 'page_size': page_size,
-                'data': data}
+                'next_index': next_index + 1
+                }
