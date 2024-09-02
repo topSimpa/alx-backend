@@ -50,9 +50,7 @@ class Server:
         page_count = 0
 
         for step in range(page_size):
-            print(index + step)
             if (index + step) in self.indexed_dataset().keys():
-                print("Entered")
                 if page_count == 0:
                     index_val = index + step
                 data.append(self.indexed_dataset()[index + step])
