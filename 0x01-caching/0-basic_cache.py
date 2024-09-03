@@ -6,7 +6,7 @@
 class BasicCache(BaseCaching):
     """ Caching without limit
     """
-	def __init__(self):
+    def __init__(self):
         """ Class initialization
         """
         super().__init__()
