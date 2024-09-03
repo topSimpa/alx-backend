@@ -2,10 +2,13 @@
 """ BasicCaching module
 """
 
+BaseCaching = __import__('base_caching').BaseCaching
+
 
 class BasicCache(BaseCaching):
     """ Caching without limit
     """
+
     def __init__(self):
         """ Class initialization
         """
