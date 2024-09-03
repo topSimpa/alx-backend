@@ -1,5 +1,5 @@
-#!/usr/bin/python3
-""" BaseCaching module
+#!/usr/bin/env python3
+""" FifoCaching module
 """
 
 
