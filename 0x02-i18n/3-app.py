@@ -39,7 +39,6 @@ def get_locale() -> str:
 def index() -> str:
     """ Return the index page
     """
-    home_title =
     return render_template('2-index.html')
 
 
