@@ -24,8 +24,10 @@ class Config:
 
 
 app.config.from_object(Config)
+babel = Babel(app)
 
 
+@babel.localeselector
 def get_locale() -> str:
     """ makes the best match amongst language options
     """
@@ -40,7 +42,6 @@ def index() -> str:
     return render_template('2-index.html')
 
 
-babel = Babel(app, locale_selector=get_locale)
 
 if __name__ == '__main__':
     app.run(debug=True)
