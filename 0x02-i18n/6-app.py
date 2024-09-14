@@ -13,7 +13,6 @@ from flask import (
 from flask_babel import Babel
 
 app = Flask(__name__)
-babel = Babel(app)
 
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
@@ -21,9 +20,6 @@ users = {
     3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
-
-
-babel.localeselector
 
 
 def get_user() -> dict:
@@ -54,8 +50,10 @@ class Config:
 
 
 app.config.from_object(Config)
+babel = Babel(app)
 
 
+babel.localeselector
 def get_locale() -> str:
     """ makes the best match amongst language options
     """
