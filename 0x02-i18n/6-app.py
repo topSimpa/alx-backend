@@ -50,19 +50,19 @@ class Config:
 
 
 app.config.from_object(Config)
-babel = Babel(app)
 
 
-@babel.localeselector
 def get_locale() -> str:
     """ makes the best match amongst language options
     """
     locale = request.args.get('locale')
+    print("locale at first", locale)
     if locale is not None:
         if locale in app.config['LANGUAGES']:
             return locale
     if g.user:
         locale = g.user.get('locale')
+        print("locale at second", locale)
         if locale in app.config['LANGUAGES']:
             return locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
@@ -75,7 +75,9 @@ def index() -> str:
     user_name = None
     if g.user:
         user_name = g.user.get('name')
-    return render_template('5-index.html', username=user_name)
+    return render_template('6-index.html', username=user_name)
+
+babel = Babel(app, locale_selector=get_locale)
 
 
 if __name__ == '__main__':
