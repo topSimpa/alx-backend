@@ -13,6 +13,7 @@ from flask import (
 from flask_babel import Babel
 
 app = Flask(__name__)
+babel = Babel(app)
 
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
@@ -20,6 +21,9 @@ users = {
     3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
+
+
+babel.localeselector
 
 
 def get_user() -> dict:
@@ -76,8 +80,6 @@ def index() -> str:
     if g.user:
         user_name = g.user.get('name')
     return render_template('6-index.html', username=user_name)
-
-babel = Babel(app, locale_selector=get_locale)
 
 
 if __name__ == '__main__':
