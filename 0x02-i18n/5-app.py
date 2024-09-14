@@ -33,7 +33,7 @@ def get_user() -> dict:
 
 
 @app.before_request
-def before_request():
+def before_request() -> None:
     """ get_user before request is handled
     """
     if get_user:
