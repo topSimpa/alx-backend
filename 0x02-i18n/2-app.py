@@ -28,7 +28,7 @@ app.config.from_object(Config)
 babel = Babel(app)
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     """ makes the best match amongst language options
     """
 
