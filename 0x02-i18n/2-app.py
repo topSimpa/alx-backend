@@ -4,9 +4,9 @@
 
 
 from flask import (
- Flask,
- render_template,
- request
+    Flask,
+    render_template,
+    request
 )
 
 from flask_babel import Babel
@@ -25,14 +25,13 @@ class Config:
 
 app.config.from_object(Config)
 
-babel = Babel(app)
 
-@babel.localeselector
 def get_locale() -> str:
     """ makes the best match amongst language options
     """
 
     return request.accept_languages.best_match(app.config['LANGUAGES'])
+
 
 @app.route('/')
 def index() -> str:
@@ -41,7 +40,7 @@ def index() -> str:
     return render_template('2-index.html')
 
 
-
+babel = Babel(app, locale_selector=get_locale)
 
 if __name__ == '__main__':
     app.run(debug=True)
