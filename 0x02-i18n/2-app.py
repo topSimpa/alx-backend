@@ -32,7 +32,7 @@ def get_locale() -> str:
     """ makes the best match amongst language options
     """
 
-    return request.accept_languages.best_match(Config.LANGUAGES)
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 @app.route('/')
 def index() -> str:
